@@ -2,9 +2,14 @@ import { JWT_SECRET } from '../../constants.js';
 import loginInputType from '../types/loginInputType.js';
 import loginResultType from '../types/loginResultType.js';
 import jwt from 'jsonwebtoken';
+import db from '../../models/index.js';
 
-const loginMutationResolver = (_, args) => {
-    const user = findByName(args.credentials.username);
+const loginMutationResolver = async (_, args) => {
+    const user = await db.User.findOne({
+        where: {
+            name: args.credentials.username,
+        }
+    });
 
     if(!user) {
         return {

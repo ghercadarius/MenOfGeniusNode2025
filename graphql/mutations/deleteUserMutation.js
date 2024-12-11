@@ -1,14 +1,24 @@
 import {GraphQLBoolean, GraphQLInt} from 'graphql';
-import {deleteEntity, findEntity} from '../../fakeDb.js';
+import db from '../../models/index.js';
 
-const deleteUserResolver = (_, args) => {
-    const user = findEntity('users', args.id);
-
-    if (!user) {
-        return null;
+const deleteUserResolver = async (_, args, context) => {
+    const isAuthorized = !!context.user_id
+   
+    if(!isAuthorized) {
+        return false;
     }
 
-    deleteEntity('users', args.id);
+    const user = await db.User.findOne({
+        where: {
+            id: args.id,
+        }
+    })
+
+    if (!user) {
+        return false;
+    }
+
+    await user.destroy();
     return true;
 }
 

@@ -1,11 +1,26 @@
 import graphql from 'graphql';
 import userInputType from '../types/userInputType.js';
-import {findEntity, updateEntity} from '../../fakeDb.js';
 import userType from '../types/userType.js';
+import db from '../../models/index.js';
 
-const updateUserMutationResolver = (_, args) => {
-    updateEntity('users', args.id, args.user);
-    return findEntity('users', args.id);
+const updateUserMutationResolver = async (_, args) => {
+    const id = args.id;
+
+    const user = await db.User.findOne({
+        where: {
+            id,
+        }
+    });
+
+    if(!user) {
+        return false;
+    }
+
+    const updatedUser = await user.update({
+        ...args.user,
+    });
+
+    return updatedUser;
 }
 
 const updateUserMutation = {

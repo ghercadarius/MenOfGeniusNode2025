@@ -1,9 +1,19 @@
 import {GraphQLInt} from 'graphql';
 import userType from '../types/userType.js';
-import {findEntity} from '../../fakeDb.js';
+import db from '../../models/index.js';
 
-const userQueryResolver = (_, { id }) => {
-    return findEntity('users', id);
+const userQueryResolver = async (_, { id }) => {
+    const user = await db.User.findOne({
+        where: {
+            id,
+        }
+    });
+
+    if(!user) {
+        return null;
+    }
+
+    return user;
 }
 
 const userQuery = {

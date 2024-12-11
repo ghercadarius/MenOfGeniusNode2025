@@ -1,9 +1,11 @@
 import { GraphQLList } from 'graphql';
 import userType from '../types/userType.js';
-import { listEntities } from '../../fakeDb.js';
+import db from '../../models/index.js';
 
-const usersQueryResolver = () => {
-    return listEntities('users');
+const usersQueryResolver = async () => {
+    const users = await db.User.findAll();
+
+    return users;
 }
 
 const usersQuery = {

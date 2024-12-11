@@ -1,7 +1,7 @@
 export default {
     "development": {
       "dialect": "sqlite",
-      "storage": "database.sqlite"
+      "storage": "db.sqlite"
     }
   }
   
