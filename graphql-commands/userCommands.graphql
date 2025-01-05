@@ -2,7 +2,7 @@
 query GetAllUsers {
     users {
         id
-        name
+        username
     }
 }
 
@@ -10,6 +10,6 @@ query GetAllUsers {
 query GetUserById {
     user(id: 1) {
         id
-        name
+        username
     }
 }

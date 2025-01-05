@@ -1,22 +1,22 @@
 # Create a new user
 mutation CreateUser {
-    createUser(user: { name: "TestUser", password: "12345" }) {
+    createUser(user: { username: "TestUser", password: "12345" }) {
         id
-        name
+        username
     }
 }
 
 # Update user
 mutation UpdateUser {
-    updateUser(id: 1, user: { name: "TestUserUpdated" }) {
+    updateUser(id: 2, user: { username: "TestUserUpdated" }) {
         id
-        name
+        username
     }
 }
 
 # Delete user - need to be authorized
 mutation DeleteUser {
-    deleteUser(id: 2)
+    deleteUser(id: 4)
 }
 
 # Login mutation

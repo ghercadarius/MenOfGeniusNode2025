@@ -6,7 +6,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     const mockUsers = new Array(100).fill().map(() => {
       return {
-        name: faker.internet.username(),
+        username: faker.internet.username(),
         password: faker.internet.password(),
         createdAt: Date(),
         updatedAt: Date(),
