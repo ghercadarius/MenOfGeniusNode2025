@@ -1,0 +1,15 @@
+# Fetch all users
+query GetAllUsers {
+    users {
+        id
+        name
+    }
+}
+
+# Fetch user by ID
+query GetUserById {
+    user(id: 1) {
+        id
+        name
+    }
+}
