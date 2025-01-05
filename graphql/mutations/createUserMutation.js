@@ -7,7 +7,7 @@ const createUserMutationResolver = async (_, { user }, context) => {
     const password = await bcrypt.hash(user.password, 5);
 
     const createdUser = await db.User.create({
-        name: user.name,
+        username: user.username,
         password: password,
     });
 
