@@ -13,7 +13,6 @@ const queryType = new graphql.GraphQLObjectType({
         updateUser: updateUserMutation,
         deleteUser: deleteUserMutation,
         login: loginMutation,
-        createPost: createPostMutation,
     }
 });
 
