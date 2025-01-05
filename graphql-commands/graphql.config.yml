@@ -6,7 +6,7 @@ projects:
     documents: '**/*.graphql'
     extensions:
       endpoints:
-        default:
+        ServerWithAuth:
           url: http://localhost:3001/graphql
           headers:
             Authorization: Bearer ${AUTH_TOKEN}

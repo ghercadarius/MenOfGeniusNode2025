@@ -1,11 +1,16 @@
-import {GraphQLBoolean, GraphQLInt} from 'graphql';
+import {GraphQLBoolean, GraphQLError, GraphQLInt} from 'graphql';
 import db from '../../models/index.js';
 
 const deleteUserResolver = async (_, args, context) => {
-    const isAuthorized = !!context.user_id
-   
-    if(!isAuthorized) {
-        return false;
+    const isAuthenticated = !!context.user_id
+
+    if (!isAuthenticated) {
+        console.log("Not authenticated");
+        throw new GraphQLError("Not authenticated", {
+            extensions: {
+                code: 'UNAUTHENTICATED',
+            },
+        });
     }
 
     const user = await db.User.findOne({
@@ -15,7 +20,11 @@ const deleteUserResolver = async (_, args, context) => {
     })
 
     if (!user) {
-        return false;
+        throw new GraphQLError("User not found", {
+            extensions: {
+                code: 'BAD_USER_INPUT',
+            },
+        });
     }
 
     await user.destroy();
