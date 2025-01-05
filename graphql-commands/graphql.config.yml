@@ -1,8 +1,8 @@
-schema: schema.graphql
+schema: http://localhost:3001/graphql
 documents: ./graphql/**/*.graphql
 projects:
   vinteadClone:
-    schema: schema.graphql
+    schema: http://localhost:3001/graphql
     documents: ./graphql/**/*.graphql
     extensions:
       endpoints:
