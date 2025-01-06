@@ -9,3 +9,4 @@ const roleType = new GraphQLObjectType({
 });
 
 export default roleType;
+//TODO create user with user role findById return not found

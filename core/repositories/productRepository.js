@@ -13,17 +13,12 @@ export const getProductById = async (id) => {
 }
 
 export const saveProduct = async (product) => {
-    try {
-        return await db.Product.create({
-            name: product.name,
-            description: product.description,
-            price: product.price,
-            userId: product.user_id,
-        });
-    } catch (error) {
-        console.error('Error uploading product:', error);
-        throw error;
-    }
+    return await db.Product.create({
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        userId: product.user_id,
+    });
 
 }
 
