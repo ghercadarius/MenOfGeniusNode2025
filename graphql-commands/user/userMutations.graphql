@@ -14,7 +14,7 @@ mutation UpdateUser {
     }
 }
 
-# Delete user - need to be authenticated
+# Delete user - need to be authenticated as ADMIN
 mutation DeleteUser {
     deleteUser(id: 5)
 }
