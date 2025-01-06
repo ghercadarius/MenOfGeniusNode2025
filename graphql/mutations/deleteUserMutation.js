@@ -1,7 +1,7 @@
 import {GraphQLBoolean, GraphQLInt} from 'graphql';
 import db from '../../models/index.js';
 import {securedResolver} from "../../core/utils/securedResolver.js";
-import {handleError} from "../../core/utils/errorHandler.js";
+import {handleError} from "../../core/utils/handleError.js";
 
 const deleteUserResolver = async (_, args) => {
     const user = await db.User.findOne({

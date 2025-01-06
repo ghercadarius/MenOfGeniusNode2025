@@ -1,5 +1,5 @@
 import {hasRoles, isAuthenticated} from './authUtils.js';
-import {handleError} from './errorHandler.js';
+import {handleError} from './handleError.js';
 
 export const securedResolver = (roles = ['user']) => {
     return (resolver) => {
