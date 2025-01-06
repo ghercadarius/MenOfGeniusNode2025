@@ -1,24 +1,20 @@
-import {JWT_SECRET} from '../../constants.js';
-import loginInputType from '../types/loginInputType.js';
-import loginResultType from '../types/loginResultType.js';
+import {JWT_SECRET} from '../../../constants.js';
+import loginInputType from '../../types/login/loginInputType.js';
+import loginResultType from '../../types/login/loginResultType.js';
 import jwt from 'jsonwebtoken';
-import db from '../../models/index.js';
+import db from '../../../models/index.js';
 import bcrypt from 'bcrypt';
-import {GraphQLError} from "graphql";
+import {handleError} from "../../../core/utils/handleError.js";
 
 const validateUserCredentials = async (username, password) => {
     const user = await db.User.findOne({where: {username}});
     if (!user) {
-        throw new GraphQLError("Bad credentials", {
-            extensions: {code: 'BAD_USER_INPUT'},
-        });
+        handleError("Bad credentials", 'BAD_USER_INPUT');
     }
 
     const passwordIsValid = await bcrypt.compare(password, user.password);
     if (!passwordIsValid) {
-        throw new GraphQLError("Bad credentials", {
-            extensions: {code: 'BAD_USER_INPUT'},
-        });
+        handleError("Bad credentials", 'BAD_USER_INPUT');
     }
 
     return user;

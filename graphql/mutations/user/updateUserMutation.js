@@ -1,8 +1,8 @@
 import graphql from 'graphql';
-import userInputType from '../types/userInputType.js';
-import userType from '../types/userType.js';
-import db from '../../models/index.js';
-import {securedResolver} from "../../core/utils/securedResolver.js";
+import userInputType from '../../types/user/userInputType.js';
+import userType from '../../types/user/userType.js';
+import db from '../../../models/index.js';
+import {securedResolver} from "../../../core/utils/securedResolver.js";
 
 const updateUserMutationResolver = async (_, args) => {
     const id = args.id;

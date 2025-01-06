@@ -1,6 +1,6 @@
 import {GraphQLInt} from 'graphql';
-import userType from '../types/userType.js';
-import db from '../../models/index.js';
+import userType from '../../types/user/userType.js';
+import db from '../../../models/index.js';
 
 const userQueryResolver = async (_, { id }) => {
     const user = await db.User.findOne({
