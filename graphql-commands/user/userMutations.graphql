@@ -1,12 +1,12 @@
 # Create a new user
 mutation CreateUser {
-    createUser(user: { username: "TestUser", password: "12345" }) {
+    createUser(user: { username: "admin", password: "admin" }) {
         id
         username
     }
 }
 
-# Update user
+# Update user - need to be authenticated as ADMIN
 mutation UpdateUser {
     updateUser(id: 2, user: { username: "TestUserUpdated" }) {
         id
