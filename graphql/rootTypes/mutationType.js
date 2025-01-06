@@ -9,6 +9,7 @@ import uploadProductMutation from '../mutations/product/uploadProductMutation.js
 const queryType = new graphql.GraphQLObjectType({
     name: "Mutation",
     fields: {
+        //TODO - implemmet UserRepository and UserService
         createUser: createUserMutation,
         updateUser: updateUserMutation,
         deleteUser: deleteUserMutation,
