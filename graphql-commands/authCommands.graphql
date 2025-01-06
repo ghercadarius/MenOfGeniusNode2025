@@ -1,6 +1,13 @@
-# Login mutation
+# Login as user
 mutation Login {
-    login(credentials: { username: "TestUser", password: "12345" }) {
+    login(credentials: { username: "user", password: "user" }) {
+        token
+    }
+}
+
+# Login as admin
+mutation Login {
+    login(credentials: { username: "admin", password: "admin" }) {
         token
     }
 }

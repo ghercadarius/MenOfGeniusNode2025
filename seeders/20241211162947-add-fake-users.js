@@ -1,27 +1,37 @@
 'use strict';
 const {faker} = require('@faker-js/faker');
+const bcrypt = require("bcrypt");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        const mockUsers = new Array(100).fill().map(() => {
-            return {
-                username: faker.internet.username(),
-                password: faker.internet.password(),
-                createdAt: Date(),
-                updatedAt: Date(),
-            }
+        const generateTimestamps = () => ({
+            createdAt: new Date(),
+            updatedAt: new Date(),
         });
 
-        await queryInterface.bulkInsert('Users', mockUsers, {});
+        const mockUsers = Array.from({length: 100}, () => ({
+            username: faker.internet.username(),
+            password: faker.internet.password(),
+            ...generateTimestamps(),
+        }));
+
+        const adminPassword = await bcrypt.hash('admin', 5);
+        const userPassword = await bcrypt.hash('user', 5);
+        const predefinedUsers = [
+            {username: 'admin', password: adminPassword},
+            {username: 'user', password: userPassword},
+        ].map(user => ({
+            ...user,
+            ...generateTimestamps(),
+        }));
+
+        const allUsers = [...mockUsers, ...predefinedUsers];
+
+        await queryInterface.bulkInsert('Users', allUsers, {});
     },
 
     async down(queryInterface, Sequelize) {
-        /**
-         * Add commands to revert seed here.
-         *
-         * Example:
-         * await queryInterface.bulkDelete('People', null, {});
-         */
+        await queryInterface.bulkDelete('Users', null, {});
     }
 };
