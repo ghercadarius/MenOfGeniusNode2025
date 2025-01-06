@@ -1,5 +1,6 @@
 'use strict';
 import {Model} from 'sequelize';
+import {RoleEnum} from "./enums/roleEnum.js";
 
 export default (sequelize, DataTypes) => {
     class Role extends Model {
@@ -10,9 +11,9 @@ export default (sequelize, DataTypes) => {
 
     Role.init({
         name: {
-            type: DataTypes.ENUM,
-            values: ['admin', 'user'],
+            type: DataTypes.ENUM(...Object.values(RoleEnum)),
             allowNull: false,
+            defaultValue: RoleEnum.USER,
         }
     }, {
         sequelize,

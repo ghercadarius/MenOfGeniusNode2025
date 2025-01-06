@@ -3,6 +3,9 @@ mutation CreateUser {
     createUser(user: { username: "admin", password: "admin" }) {
         id
         username
+        roles {
+            name
+        }
     }
 }
 

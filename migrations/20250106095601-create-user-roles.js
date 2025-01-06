@@ -11,7 +11,7 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             name: {
-                type: Sequelize.ENUM('admin', 'user'),
+                type: Sequelize.STRING,
                 allowNull: false,
             }
         }, {

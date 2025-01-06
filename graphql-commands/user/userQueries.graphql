@@ -15,6 +15,7 @@ query GetUserById {
         id
         username
         roles {
+            id
             name
         }
     }
