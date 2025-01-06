@@ -3,6 +3,9 @@ query GetAllUsers {
     users {
         id
         username
+        roles {
+            name
+        }
     }
 }
 
@@ -11,5 +14,8 @@ query GetUserById {
     user(id: 1) {
         id
         username
+        roles {
+            name
+        }
     }
 }
