@@ -1,33 +1,9 @@
-import {GraphQLBoolean, GraphQLError, GraphQLInt} from 'graphql';
+import {GraphQLBoolean, GraphQLInt} from 'graphql';
 import db from '../../models/index.js';
+import {securedResolver} from "../../core/utils/securedResolver.js";
+import {handleError} from "../../core/utils/errorHandler.js";
 
-const deleteUserResolver = async (_, args, context) => {
-    const isAuthenticated = !!context.user_id
-
-    if (!isAuthenticated) {
-        console.log("Not authenticated");
-        throw new GraphQLError("Not authenticated", {
-            extensions: {
-                code: 'UNAUTHENTICATED',
-            },
-        });
-    }
-    //TODO - create a jwt filter to verify the roles
-    const userRequester = await db.User.findOne({
-        where: {
-            id: context.user_id,
-        }
-    });
-    const roles = await userRequester.getRoles();
-    const isAdmin = roles.some((role) => role.name === 'admin');
-    if (!isAdmin) {
-        throw new GraphQLError("Not authorized", {
-            extensions: {
-                code: 'FORBIDDEN',
-            },
-        });
-    }
-
+const deleteUserResolver = async (_, args) => {
     const user = await db.User.findOne({
         where: {
             id: args.id,
@@ -35,11 +11,7 @@ const deleteUserResolver = async (_, args, context) => {
     })
 
     if (!user) {
-        throw new GraphQLError("User not found", {
-            extensions: {
-                code: 'BAD_USER_INPUT',
-            },
-        });
+        handleError("User not found", 'BAD_USER_INPUT');
     }
 
     await user.destroy();
@@ -51,7 +23,7 @@ const deleteUserMutation = {
     args: {
         id: {type: GraphQLInt},
     },
-    resolve: deleteUserResolver,
+    resolve: securedResolver(['admin'])(deleteUserResolver),
 };
 
 export default deleteUserMutation;
