@@ -1,0 +1,8 @@
+mutation UploadProduct {
+    uploadProduct(product: { name: "Product 1", price: 99.99, description: "Product 1 description" }) {
+        id
+        name
+        price
+        description
+    }
+}
