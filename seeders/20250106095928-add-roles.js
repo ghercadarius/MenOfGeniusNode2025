@@ -3,24 +3,13 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        const roles = [
-            {
-                name: 'admin',
-            },
-            {
-                name: 'user',
-            }
-        ];
-
-        await queryInterface.bulkInsert('Roles', roles, {});
+        await queryInterface.bulkInsert('Roles', [
+            {id: 1, name: 'admin'},
+            {id: 2, name: 'user'},
+        ], {});
     },
 
     async down(queryInterface, Sequelize) {
-        /**
-         * Add commands to revert seed here.
-         *
-         * Example:
-         * await queryInterface.bulkDelete('People', null, {});
-         */
+        await queryInterface.bulkDelete('Roles', null, {});
     }
 };
