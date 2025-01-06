@@ -5,6 +5,6 @@ export const uploadProduct = async (product, user_id) => {
     if (product.price <= 0)
         handleError("Price must be greater than 0", 'BAD_REQUEST');
 
-    product.user_id = user_id;
+    product.userId = user_id;
     return await saveProduct(product);
 }

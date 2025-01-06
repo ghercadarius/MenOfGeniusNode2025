@@ -13,12 +13,6 @@ export const getProductById = async (id) => {
 }
 
 export const saveProduct = async (product) => {
-    return await db.Product.create({
-        name: product.name,
-        description: product.description,
-        price: product.price,
-        userId: product.user_id,
-    });
-
+        return await db.Product.create(product);
 }
 

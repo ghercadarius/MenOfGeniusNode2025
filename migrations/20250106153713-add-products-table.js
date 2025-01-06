@@ -25,6 +25,14 @@ module.exports = {
                 type: Sequelize.TEXT,
                 allowNull: true,
             },
+            urlPhoto: {
+                type: Sequelize.STRING,
+                allowNull: true,
+            },
+            category: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
             userId: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
