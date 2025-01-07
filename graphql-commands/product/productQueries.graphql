@@ -19,3 +19,23 @@ query GetProductById {
         category
     }
 }
+
+query GetAllProducts{
+    products(category: "T_SHIRTS"){
+        id
+        name
+        price
+        description
+        category
+    }
+}
+
+query GetAllProducts{
+    products(category: "T_SHIRTS", minPrice: 10000, maxPrice: 1000){
+        id
+        name
+        price
+        description
+        category
+    }
+}

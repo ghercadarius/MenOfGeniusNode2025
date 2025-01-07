@@ -12,6 +12,7 @@ const queryType = new GraphQLObjectType({
 
         product: productQuery,
         products: productsQuery,
+
     },
 });
 

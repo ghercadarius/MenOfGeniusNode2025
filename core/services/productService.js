@@ -16,6 +16,12 @@ export const getProductById = async (id) => {
     return product;
 }
 
-export const getAllProducts = async () => {
-    return await productRepository.getAll();
+export const getAllProducts = async (category, minPrice, maxPrice) => {
+    if(minPrice > maxPrice)
+        handleError("Min price cannot be greater than max price", 'BAD_REQUEST');
+    const products = await productRepository.getAll(category, minPrice, maxPrice);
+    if (!products || products.length === 0)
+        handleError("There are no products that match your filters.", 'BAD_REQUEST');
+    return products;
 }
+
