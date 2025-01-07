@@ -1,7 +1,8 @@
 import {GraphQLBoolean, GraphQLInt} from 'graphql';
-import db from '../../models/index.js';
-import {securedResolver} from "../../core/utils/securedResolver.js";
-import {handleError} from "../../core/utils/handleError.js";
+import db from '../../../models/index.js';
+import {securedResolver} from "../../../core/utils/securedResolver.js";
+import {handleError} from "../../../core/utils/handleError.js";
+import {RoleEnum} from "../../../models/enums/roleEnum.js";
 
 const deleteUserResolver = async (_, args) => {
     const user = await db.User.findOne({
@@ -23,7 +24,7 @@ const deleteUserMutation = {
     args: {
         id: {type: GraphQLInt},
     },
-    resolve: securedResolver(['admin'])(deleteUserResolver),
+    resolve: securedResolver([RoleEnum.ADMIN])(deleteUserResolver),
 };
 
 export default deleteUserMutation;

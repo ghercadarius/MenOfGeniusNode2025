@@ -8,7 +8,10 @@ const userType = new GraphQLObjectType({
         username: {type: GraphQLString},
         roles: {
             type: new GraphQLList(roleType),
-            resolve: async (user) => await user.getRoles()
+            resolve: async (user) => {
+                const roles = await user.getRoles();
+                return roles.map(role => role.name);
+            }
         }
     }
 });
