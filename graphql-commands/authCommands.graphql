@@ -1,27 +1,13 @@
-# Create a new user
-mutation CreateUser {
-    createUser(user: { name: "TestUser", password: "12345" }) {
-        id
-        name
-    }
-}
-
-# Update user
-mutation UpdateUser {
-    updateUser(id: 1, user: { name: "TestUserUpdated" }) {
-        id
-        name
-    }
-}
-
-# Delete user - need to be authorized
-mutation DeleteUser {
-    deleteUser(id: 2)
-}
-
-# Login mutation
+# Login as user
 mutation Login {
-    login(credentials: { username: "TestUser", password: "12345" }) {
+    login(credentials: { username: "user", password: "user" }) {
+        token
+    }
+}
+
+# Login as admin
+mutation Login {
+    login(credentials: { username: "admin", password: "admin" }) {
         token
     }
 }

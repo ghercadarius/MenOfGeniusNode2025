@@ -3,7 +3,7 @@ import {GraphQLInputObjectType, GraphQLObjectType, GraphQLString} from 'graphql'
 const userInputType = new GraphQLInputObjectType({
     name: 'UserInput',
     fields: {
-        name: { type: GraphQLString },
+        username: { type: GraphQLString },
         password: { type: GraphQLString }
     }
 });

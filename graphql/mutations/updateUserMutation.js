@@ -2,6 +2,7 @@ import graphql from 'graphql';
 import userInputType from '../types/userInputType.js';
 import userType from '../types/userType.js';
 import db from '../../models/index.js';
+import {securedResolver} from "../../core/utils/securedResolver.js";
 
 const updateUserMutationResolver = async (_, args) => {
     const id = args.id;
@@ -12,15 +13,13 @@ const updateUserMutationResolver = async (_, args) => {
         }
     });
 
-    if(!user) {
+    if (!user) {
         return false;
     }
 
-    const updatedUser = await user.update({
+    return await user.update({
         ...args.user,
     });
-
-    return updatedUser;
 }
 
 const updateUserMutation = {
@@ -29,7 +28,7 @@ const updateUserMutation = {
         id: {type: graphql.GraphQLInt},
         user: {type: userInputType},
     },
-    resolve: updateUserMutationResolver,
+    resolve: securedResolver(['admin'])(updateUserMutationResolver),
 };
 
 export default updateUserMutation;

@@ -1,0 +1,20 @@
+# Create a new user
+mutation CreateUser {
+    createUser(user: { username: "admin", password: "admin" }) {
+        id
+        username
+    }
+}
+
+# Update user - need to be authenticated as ADMIN
+mutation UpdateUser {
+    updateUser(id: 2, user: { username: "TestUserUpdated" }) {
+        id
+        username
+    }
+}
+
+# Delete user - need to be authenticated as ADMIN
+mutation DeleteUser {
+    deleteUser(id: 5)
+}

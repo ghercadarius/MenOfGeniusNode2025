@@ -1,42 +1,44 @@
-import { JWT_SECRET } from '../../constants.js';
+import {JWT_SECRET} from '../../constants.js';
 import loginInputType from '../types/loginInputType.js';
 import loginResultType from '../types/loginResultType.js';
 import jwt from 'jsonwebtoken';
 import db from '../../models/index.js';
 import bcrypt from 'bcrypt';
+import {GraphQLError} from "graphql";
+
+const validateUserCredentials = async (username, password) => {
+    const user = await db.User.findOne({where: {username}});
+    if (!user) {
+        throw new GraphQLError("Bad credentials", {
+            extensions: {code: 'BAD_USER_INPUT'},
+        });
+    }
+
+    const passwordIsValid = await bcrypt.compare(password, user.password);
+    if (!passwordIsValid) {
+        throw new GraphQLError("Bad credentials", {
+            extensions: {code: 'BAD_USER_INPUT'},
+        });
+    }
+
+    return user;
+};
+
+const generateAuthToken = (userId) => {
+    return jwt.sign({user_id: userId}, JWT_SECRET);
+};
 
 const loginMutationResolver = async (_, args) => {
-    const user = await db.User.findOne({
-        where: {
-            name: args.credentials.username,
-        }
-    });
+    const {username, password} = args.credentials;
 
-    if(!user) {
-        return {
-            token: null,
-        }
-    }
+    const user = await validateUserCredentials(username, password);
 
-    const providedPassword = args.credentials.password;
-    const userPassword = user.password;
+    const token = generateAuthToken(user.id);
 
-    const passwordIsValid = await bcrypt.compare(providedPassword, userPassword);
-
-    if(!passwordIsValid) {
-        console.log("Password is invalid");
-
-        return {
-            token: null,
-        }
-    }
-    
-    const token = jwt.sign({ user_id: user.id }, JWT_SECRET);
-    
     return {
         token,
     };
-}
+};
 
 const loginMutation = {
     type: loginResultType,
