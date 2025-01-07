@@ -31,7 +31,17 @@ query GetAllProducts{
 }
 
 query GetAllProducts{
-    products(category: "T_SHIRTS", minPrice: 10000, maxPrice: 1000){
+    products(category: "T_SHIRTS", minPrice: 100, maxPrice: 1000){
+        id
+        name
+        price
+        description
+        category
+    }
+}
+
+query GetAllProducts{
+    products(minPrice: 100, maxPrice: 150){
         id
         name
         price
