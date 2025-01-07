@@ -1,11 +1,12 @@
-import {GraphQLObjectType, GraphQLString} from 'graphql';
+import {GraphQLEnumType} from 'graphql';
+import {RoleEnum} from "../../../models/enums/roleEnum.js";
 
-const roleType = new GraphQLObjectType({
+const roleType = new GraphQLEnumType({
     name: 'Role',
-    fields: {
-        id: {type: GraphQLString},
-        name: {type: GraphQLString},
-    },
+    values: {
+        ADMIN: {value: RoleEnum.ADMIN},
+        USER: {value: RoleEnum.USER},
+    }
 });
 
 export default roleType;
