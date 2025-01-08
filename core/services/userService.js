@@ -17,3 +17,9 @@ export const createUser = async (user) => {
     await createCart(newUser.id);
     return newUser;
 }
+
+export const deleteUser = async (id) => {
+    const user = await userRepository.getUserById(id);
+    await user.destroy();
+    return user;
+}
