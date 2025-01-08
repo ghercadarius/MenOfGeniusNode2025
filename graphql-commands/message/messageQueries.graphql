@@ -1,0 +1,6 @@
+query GetMessagesUser {
+    messagesChat(chatId: 6) {
+        id
+        message
+    }
+}

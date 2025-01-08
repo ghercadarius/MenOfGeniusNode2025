@@ -6,6 +6,7 @@ import productQuery from "../queries/product/productQuery.js";
 import chatQuery from "../queries/chat/chatQuery.js";
 import chatsUserQuery from "../queries/chat/chatsUserQuery.js";
 import chatsQuery from "../queries/chat/chatsQuery.js";
+import messagesChatQuery from "../queries/message/messagesChatQuery.js";
 
 const queryType = new GraphQLObjectType({
     name: "Query",
@@ -19,6 +20,8 @@ const queryType = new GraphQLObjectType({
         chat: chatQuery,
         chats: chatsQuery,
         chatsUser: chatsUserQuery,
+
+        messagesChat: messagesChatQuery,
     },
 });
 
