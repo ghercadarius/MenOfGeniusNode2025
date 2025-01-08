@@ -11,8 +11,7 @@ const cartType = new GraphQLObjectType({
         },
         products: { type: new GraphQLList(productType),
             resolve: async (cart) => {
-                const products = await cart.getProducts();
-                return products.map(product => product.name);
+                return await cart.getProducts();
             }
         },
 
