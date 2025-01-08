@@ -9,7 +9,7 @@ export const securedResolver = (roles = [RoleEnum.USER]) => {
                 handleError("Not authenticated", 'UNAUTHENTICATED');
             }
 
-            const hasRequiredRole = await hasRoles(context.user_id, roles);
+            const hasRequiredRole = await hasRoles(context.userId, roles);
 
             if (!hasRequiredRole) {
                 handleError("Not authorized", 'FORBIDDEN');

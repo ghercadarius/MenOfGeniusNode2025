@@ -21,7 +21,7 @@ const validateUserCredentials = async (username, password) => {
 };
 
 const generateAuthToken = (userId) => {
-    return jwt.sign({user_id: userId}, JWT_SECRET);
+    return jwt.sign({userId: userId}, JWT_SECRET);
 };
 
 const loginMutationResolver = async (_, args) => {

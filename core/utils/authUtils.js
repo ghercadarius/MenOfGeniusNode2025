@@ -1,14 +1,14 @@
 import db from "../../models/index.js";
 
 export const isAuthenticated = (context) => {
-    return !!context.user_id;
+    return !!context.userId;
 };
 
-export const hasRoles = async (user_id, roles) => {
+export const hasRoles = async (userId, roles) => {
     const userRoles = await db.Role.findAll({
         include: [{
             model: db.User,
-            where: {id: user_id},
+            where: {id: userId},
             attributes: []
         }],
         attributes: ['name'],

@@ -4,7 +4,7 @@ import {securedResolver} from "../../../core/utils/securedResolver.js";
 import {addProductToMyCart} from "../../../core/services/cartService.js";
 
 const addProductToCartResolver = async (_, args, context) => {
-    return await addProductToMyCart(context.user_id, args.productId);
+    return await addProductToMyCart(context.userId, args.productId);
 }
 
 const addProductToCartMutation = {
