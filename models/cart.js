@@ -6,7 +6,7 @@ export default (sequelize, DataTypes) => {
         static associate(models) {
             Cart.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
             Cart.belongsToMany(models.Product, {through: 'CartProducts', foreignKey: 'cartId'});
-            }
+        }
     }
 
     Cart.init({
