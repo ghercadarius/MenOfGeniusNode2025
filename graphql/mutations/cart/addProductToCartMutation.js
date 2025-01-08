@@ -1,16 +1,16 @@
 import {GraphQLInt} from "graphql";
 import cartType from "../../types/cart/cartType.js";
 import {securedResolver} from "../../../core/utils/securedResolver.js";
-import {addProductToMyCart} from "../../../core/services/cartService.js";
+import {addProductToCart} from "../../../core/services/cartService.js";
 
 const addProductToCartResolver = async (_, args, context) => {
-    return await addProductToMyCart(context.userId, args.productId);
+    return await addProductToCart(context.userId, args.productId);
 }
 
 const addProductToCartMutation = {
     type: cartType,
     args: {
-        productId: { type: GraphQLInt },
+        productId: {type: GraphQLInt},
     },
     resolve: securedResolver()(addProductToCartResolver),
 }

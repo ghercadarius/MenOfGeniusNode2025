@@ -7,7 +7,7 @@ mutation AddProductToMyCart {
         }
         products {
             id
-
+            name
         }
     }
 }
