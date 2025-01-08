@@ -1,20 +1,9 @@
 import {GraphQLInt} from 'graphql';
 import userType from '../../types/user/userType.js';
-import db from '../../../models/index.js';
-import {handleError} from "../../../core/utils/handleError.js";
+import userRepository from "../../../core/repositories/userRepository.js";
 
 const userQueryResolver = async (_, {id}) => {
-    const user = await db.User.findOne({
-        where: {
-            id,
-        }
-    });
-
-    if (!user) {
-        handleError("User not found", 'BAD_USER_INPUT');
-    }
-    
-    return user;
+    return await userRepository.getUserById(id);
 }
 
 const userQuery = {
