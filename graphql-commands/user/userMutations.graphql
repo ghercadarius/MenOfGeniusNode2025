@@ -1,6 +1,6 @@
 # Create a new user
 mutation CreateUser {
-    createUser(user: { username: "admin", password: "admin" }) {
+    createUser(user: { username: "cart", password: "cart" }) {
         id
         username
         roles

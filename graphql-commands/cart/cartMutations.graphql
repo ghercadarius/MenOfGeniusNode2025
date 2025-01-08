@@ -1,0 +1,13 @@
+mutation AddProductToMyCart {
+    addProductToCart(productId: 4) {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+
+        }
+    }
+}

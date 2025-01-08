@@ -1,5 +1,6 @@
 import db from '../../models/index.js';
 import categoryType from "../../graphql/types/product/categoryType.js";
+import {handleError} from "../utils/handleError.js";
 
 class ProductRepository {
     static async getAll(category, minPrice, maxPrice) {
@@ -31,9 +32,12 @@ class ProductRepository {
     }
 
     static async getById(id) {
-        return await db.Product.findOne({
+        const product = await db.Product.findOne({
             where: {id}
         });
+        if(!product)
+            handleError("Product not found", 'BAD_REQUEST');
+        return product;
     }
 
     static save(product) {

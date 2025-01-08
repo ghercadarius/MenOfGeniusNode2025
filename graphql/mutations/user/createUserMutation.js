@@ -20,6 +20,10 @@ const createUserMutationResolver = async (_, {user}, context) => {
 
     await newUser.addRole(userRole);
 
+    const cart = await db.Cart.create({
+        userId: newUser.id,
+    });
+
     return newUser;
 
 }
