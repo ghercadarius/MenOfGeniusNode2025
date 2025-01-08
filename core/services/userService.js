@@ -23,3 +23,12 @@ export const deleteUser = async (id) => {
     await user.destroy();
     return user;
 }
+
+export const updateUser = async (id, user) => {
+    const userToUpdate = await userRepository.getUserById(id);
+    const {password, ...rest} = user;
+    if (password) {
+        rest.password = await bcrypt.hash(password, 5);
+    }
+    return await userToUpdate.update(rest);
+}
