@@ -1,6 +1,6 @@
 # Login as user
 mutation Login {
-    login(credentials: { username: "user", password: "user" }) {
+    login(credentials: { username: "cart", password: "cart" }) {
         token
     }
 }

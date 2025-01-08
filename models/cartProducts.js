@@ -1,10 +1,10 @@
 'use strict';
-import {Model} from 'sequelize';
+import {Model as CartProduct, Model} from 'sequelize';
 
 export default (sequelize, DataTypes) => {
     class CartProducts extends Model {
         static associate(models) {
-        }
+            }
     }
 
     CartProducts.init({
