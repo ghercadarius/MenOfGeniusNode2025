@@ -24,12 +24,12 @@ const jwtMiddleware = (req, res, next) => {
     try {
         const decodedPayload = jwt.verify(token, JWT_SECRET);
         console.log('decodedPayload', decodedPayload);
-        req.user_id = decodedPayload.user_id;
+        req.userId = decodedPayload.userId;
         next();
     } catch (e) {
         console.log("Invalid Token", e);
         //TODO - Implement a error handling middleware
-        return res.status(401).json({ error: 'Invalid or expired token' });
+        return res.status(401).json({error: 'Invalid or expired token'});
     }
 }
 
@@ -44,7 +44,7 @@ app.all(
         schema: schema,
         context: (req) => {
             return {
-                user_id: req.raw.user_id,
+                userId: req.raw.userId,
             }
         }
     })

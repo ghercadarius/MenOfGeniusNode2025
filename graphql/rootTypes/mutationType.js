@@ -8,22 +8,28 @@ import addProductToCartMutation from "../mutations/cart/addProductToCartMutation
 import createChatMutation from "../mutations/chat/createChatMutation.js";
 
 // Define the Query type
-const queryType = new graphql.GraphQLObjectType({
+const mutationType = new graphql.GraphQLObjectType({
     name: "Mutation",
     fields: {
-        //TODO - implemmet UserRepository and UserService
+        //User Mutations
         createUser: createUserMutation,
         updateUser: updateUserMutation,
         deleteUser: deleteUserMutation,
 
+        //Auth Mutations
         login: loginMutation,
 
+        //Product Mutations
         uploadProduct: uploadProductMutation,
-        addProductToCart: addProductToCartMutation,
 
+        //Cart Mutations
+        addProductToCart: addProductToCartMutation,
+        //TODO - add deleteProductFromCart mutationd
+
+        //Chat Mutations
         createChat: createChatMutation,
     }
 });
 
 
-export default queryType;
+export default mutationType;

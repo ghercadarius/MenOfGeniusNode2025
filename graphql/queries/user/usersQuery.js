@@ -1,11 +1,9 @@
-import { GraphQLList } from 'graphql';
+import {GraphQLList} from 'graphql';
 import userType from '../../types/user/userType.js';
-import db from '../../../models/index.js';
+import userRepository from "../../../core/repositories/userRepository.js";
 
 const usersQueryResolver = async () => {
-    const users = await db.User.findAll();
-
-    return users;
+    return await userRepository.getAllUsers();
 }
 
 const usersQuery = {
