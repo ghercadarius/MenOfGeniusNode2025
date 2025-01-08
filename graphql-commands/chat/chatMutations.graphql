@@ -1,0 +1,5 @@
+mutation ChatMutation {
+    createChat(chat: { productId: 2 }) {
+        id
+    }
+}

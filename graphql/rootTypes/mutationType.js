@@ -5,6 +5,7 @@ import deleteUserMutation from '../mutations/user/deleteUserMutation.js';
 import loginMutation from '../mutations/login/loginMutation.js';
 import uploadProductMutation from '../mutations/product/uploadProductMutation.js';
 import addProductToCartMutation from "../mutations/cart/addProductToCartMutation.js";
+import createChatMutation from "../mutations/chat/createChatMutation.js";
 
 // Define the Query type
 const queryType = new graphql.GraphQLObjectType({
@@ -19,6 +20,8 @@ const queryType = new graphql.GraphQLObjectType({
 
         uploadProduct: uploadProductMutation,
         addProductToCart: addProductToCartMutation,
+
+        createChat: createChatMutation,
     }
 });
 
