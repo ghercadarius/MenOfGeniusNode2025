@@ -29,7 +29,7 @@ const jwtMiddleware = (req, res, next) => {
     } catch (e) {
         console.log("Invalid Token", e);
         //TODO - Implement a error handling middleware
-        return res.status(401).json({ error: 'Invalid or expired token' });
+        return res.status(401).json({error: 'Invalid or expired token'});
     }
 }
 
