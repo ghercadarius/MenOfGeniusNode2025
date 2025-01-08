@@ -15,3 +15,12 @@ query GetUserById {
         roles
     }
 }
+
+# Get user authenticated
+query GetMe {
+    me{
+        id
+        username
+        roles
+    }
+}

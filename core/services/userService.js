@@ -32,3 +32,7 @@ export const updateUser = async (id, user) => {
     }
     return await userToUpdate.update(rest);
 }
+
+export const getMe = async (id) => {
+    return await userRepository.getUserById(id);
+}
