@@ -1,0 +1,41 @@
+query GetChatByID {
+    chat(id: 4) {
+        id
+        user {
+            id
+            username
+        }
+        product {
+            id
+            name
+        }
+    }
+}
+
+query GetAllChats {
+    chats{
+        id
+        user {
+            id
+            username
+        }
+        product {
+            id
+            name
+        }
+    }
+}
+
+query GetChatsUser {
+    chatsUser {
+        id
+        user {
+            id
+            username
+        }
+        product {
+            id
+            name
+        }
+    }
+}

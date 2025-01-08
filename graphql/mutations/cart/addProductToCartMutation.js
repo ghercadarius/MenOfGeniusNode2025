@@ -10,7 +10,7 @@ const addProductToCartResolver = async (_, args, context) => {
 const addProductToCartMutation = {
     type: cartType,
     args: {
-        productId: {type: GraphQLInt},
+        productId: { type: GraphQLInt },
     },
     resolve: securedResolver()(addProductToCartResolver),
 }

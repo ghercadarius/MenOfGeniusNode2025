@@ -24,6 +24,9 @@ const queryType = new graphql.GraphQLObjectType({
         //Cart Mutations
         addProductToCart: addProductToCartMutation,
         //TODO - add deleteProductFromCart mutationd
+
+        //Chat Mutations
+        createChat: createChatMutation,
     }
 });
 
