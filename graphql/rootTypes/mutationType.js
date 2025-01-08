@@ -10,15 +10,20 @@ import addProductToCartMutation from "../mutations/cart/addProductToCartMutation
 const queryType = new graphql.GraphQLObjectType({
     name: "Mutation",
     fields: {
-        //TODO - implemmet UserRepository and UserService
+        //User Mutations
         createUser: createUserMutation,
         updateUser: updateUserMutation,
         deleteUser: deleteUserMutation,
 
+        //Auth Mutations
         login: loginMutation,
 
+        //Product Mutations
         uploadProduct: uploadProductMutation,
+
+        //Cart Mutations
         addProductToCart: addProductToCartMutation,
+        //TODO - add deleteProductFromCart mutationd
     }
 });
 
