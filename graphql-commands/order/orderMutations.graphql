@@ -1,9 +1,13 @@
-mutation CreateOrder{
+mutation createOrder{
     createOrder {
-        order {
+        id
+        user {
             id
-            status
-            product
+            username
         }
+        product{
+            name
+        }
+        status
     }
 }

@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
         static associate(models) {
             Product.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
             Product.belongsToMany(models.Cart, {through: 'CartProducts', foreignKey: 'productId'});
-            Product.belongsTo(models.Order, {foreignKey: 'productId', as: 'product'});
+            Product.hasMany(models.Order, {foreignKey: 'productId', as: 'product'});
         }
     }
 

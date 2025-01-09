@@ -1,21 +1,22 @@
-import * as orderRepository from "./orderService.js";
 import CartRepository from "../repositories/cartRepository.js";
-import {OrderStatusEnum} from "../../models/enums/orderStatusEnum.js";
+import orderRepository from "../repositories/orderRepository.js";
+import CartService from "../repositories/cartProductRepository.js";
 
 export const createOrder = async (userId) => {
     const cart = await CartRepository.getCartByUserId(userId);
 
-    if (!cart || cart.products.length === 0) {
+    const products = await CartService.getCartProducts(cart.id);
+
+    if (!cart || !products) {
         throw new Error("Cart is empty");
     }
 
-    return await Promise.all(
-        cart.products.map(async (product) => {
-            return await orderRepository.createOrder({
-                userId: userId,
-                productId: product.id,
-                status: OrderStatusEnum.PENDING,
-            });
-        })
-    );
+    let allOrderProducts = [];
+    for (const product of products) {
+        allOrderProducts.add(
+            await orderRepository.createOrder(userId, product));
+    }
+    await CartService.removeAllProductsFromCart(userId);
+
+    return allOrderProducts;
 }
