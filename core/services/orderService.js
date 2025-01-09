@@ -1,22 +1,31 @@
-import CartRepository from "../repositories/cartRepository.js";
-import orderRepository from "../repositories/orderRepository.js";
-import CartService from "../repositories/cartProductRepository.js";
+import db from "../../models/index.js";
+import {OrderStatusEnum} from "../../models/enums/orderStatusEnum.js";
+import cartOrderRepository from "../repositories/cartProductRepository.js";
 
 export const createOrder = async (userId) => {
-    const cart = await CartRepository.getCartByUserId(userId);
+    const cart = await db.Cart.findOne({
+        where: {userId}
+    });
 
-    const products = await CartService.getCartProducts(cart.id);
+    const cartProducts = await db.CartProducts.findAll({
+        where: {cartId: cart.id}
+    });
 
-    if (!cart || !products) {
-        throw new Error("Cart is empty");
-    }
+    const products = await Promise.all(cartProducts.map(async (cartProduct) => {
+        return await db.Product.findByPk(cartProduct.productId);
+    }));
 
-    let allOrderProducts = [];
-    for (const product of products) {
-        allOrderProducts.add(
-            await orderRepository.createOrder(userId, product));
-    }
-    await CartService.removeAllProductsFromCart(userId);
+    const allCreatedOrders = await Promise.all(products.map(async (product) => {
+            return await db.Order.create({
+                userId,
+                productId: product.id,
+                status: OrderStatusEnum.PENDING,
+            });
+        }
+    ));
 
-    return allOrderProducts;
+    await cartOrderRepository.removeAllProductsFromCart(cart.id);
+
+    return allCreatedOrders;
+
 }

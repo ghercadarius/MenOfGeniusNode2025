@@ -16,7 +16,7 @@ export const addProductToCart = async (userId, productId) => {
     ]);
 
     // Check if the product is already in the cart
-    const cartProduct = await cartProductRepository.getCartProducts(cart.id, productId);
+    const cartProduct = await cartProductRepository.getCartProduct(cart.id, productId);
     if (cartProduct) {
         throw handleError("You already have this product in your cart", 'BAD_REQUEST');
     }
