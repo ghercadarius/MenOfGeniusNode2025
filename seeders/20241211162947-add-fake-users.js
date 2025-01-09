@@ -28,8 +28,16 @@ module.exports = {
 
         const allUsers = [...mockUsers, ...predefinedUsers];
 
+        //create cart for each user
+        const carts = allUsers.map((user, index) => ({
+            userId: index + 1,
+            ...generateTimestamps(),
+        }));
+
+
         await queryInterface.bulkInsert('Users', allUsers, {});
-    },
+        await queryInterface.bulkInsert('Carts', carts, {});
+        },
 
     async down(queryInterface, Sequelize) {
         await queryInterface.bulkDelete('Users', null, {});
