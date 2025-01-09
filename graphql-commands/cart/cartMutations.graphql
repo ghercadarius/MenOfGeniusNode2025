@@ -1,5 +1,5 @@
 mutation AddProductToMyCart {
-    addProductToCart(productId: 4) {
+    addProductToCart(productId: 35) {
         id
         user {
             id
@@ -11,3 +11,32 @@ mutation AddProductToMyCart {
         }
     }
 }
+
+mutation RemoveProductFromMyCart {
+    removeProductFromCart(productId: 4) {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+            name
+        }
+    }
+}
+
+mutation RemoveAllProductsFromMyCart {
+    removeAllProductsFromCart {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+            name
+        }
+    }
+}
+

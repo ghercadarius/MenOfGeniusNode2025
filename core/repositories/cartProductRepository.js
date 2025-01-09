@@ -16,6 +16,24 @@ class CartProductRepository {
             }
         });
     }
+
+    static async removeProductFromCart(cartId, productId) {
+        return await db.CartProducts.destroy({
+            where: {
+                cartId,
+                productId
+            }
+        });
+    }
+
+    static async removeAllProductsFromCart(cartId) {
+        return await db.CartProducts.destroy({
+            where: {
+                cartId
+            }
+        });
+    }
+
 }
 
 export default CartProductRepository;
