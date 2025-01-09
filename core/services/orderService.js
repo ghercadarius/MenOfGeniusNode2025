@@ -33,13 +33,18 @@ export const createOrder = async (userId) => {
 
 export const getAllOffersReceived = async (userId) => {
     const myProducts = await db.Product.findAll({
-        where: {userId}
+        where: {userId},
+        attributes: ['id'], // Fetch only the necessary fields
     });
 
-    return await Promise.all(myProducts.map(async (product) => {
-        return await db.Order.findAll({
-            where: {productId: product.id}
-        });
-    }));
+    const productIds = myProducts.map(product => product.id);
+
+    return await db.Order.findAll({
+        where: {productId: productIds},
+        include: [
+            {model: db.User, as: 'user'}, // Include user details
+            {model: db.Product, as: 'product'} // Include product details
+        ]
+    });
 
 }
