@@ -1,5 +1,5 @@
 mutation UploadProduct {
-    uploadProduct(product: { name: "Product 1", price: 99.99, description: "Product 1 description" ,urlPhoto: "https://www.google.com", category: T_SHIRTS}) {
+    uploadProduct(product: { name: "Product 3", price: 99.99, description: "Product 1 description" ,urlPhoto: "https://www.google.com", category: T_SHIRTS}) {
         id
         category
         name

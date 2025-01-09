@@ -8,6 +8,7 @@ import addProductToCartMutation from "../mutations/cart/addProductToCartMutation
 import createChatMutation from "../mutations/chat/createChatMutation.js";
 import removeProductFromCartMutation from "../mutations/cart/removeProductFromCartMutation.js";
 import removeAllProductsFromCartMutation from "../mutations/cart/removeAllProductsFromCartMutation.js";
+import createMessageMutation from "../mutations/message/messageMutation.js";
 
 // Define the Query type
 const mutationType = new graphql.GraphQLObjectType({
@@ -31,6 +32,8 @@ const mutationType = new graphql.GraphQLObjectType({
 
         //Chat Mutations
         createChat: createChatMutation,
+
+        createMessage: createMessageMutation,
     }
 });
 

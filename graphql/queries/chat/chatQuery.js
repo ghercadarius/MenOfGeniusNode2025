@@ -4,7 +4,7 @@ import {getChatById} from "../../../core/services/chatService.js";
 import {GraphQLInt} from "graphql";
 
 const chatQueryResolver = async (_, args, context) => {
-    return await getChatById(args.id, context.user_id);
+    return await getChatById(args.id, context.userId);
 }
 const chatQuery = {
     type: chatType,
