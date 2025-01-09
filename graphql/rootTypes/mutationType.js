@@ -6,6 +6,7 @@ import loginMutation from '../mutations/login/loginMutation.js';
 import uploadProductMutation from '../mutations/product/uploadProductMutation.js';
 import addProductToCartMutation from "../mutations/cart/addProductToCartMutation.js";
 import createChatMutation from "../mutations/chat/createChatMutation.js";
+import createMessageMutation from "../mutations/message/messageMutation.js";
 
 // Define the Query type
 const mutationType = new graphql.GraphQLObjectType({
@@ -28,6 +29,8 @@ const mutationType = new graphql.GraphQLObjectType({
 
         //Chat Mutations
         createChat: createChatMutation,
+
+        createMessage: createMessageMutation,
     }
 });
 

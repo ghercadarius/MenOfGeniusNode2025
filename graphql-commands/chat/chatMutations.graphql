@@ -1,5 +1,5 @@
 mutation ChatMutation {
-    createChat(chat: { productId: 2 }) {
+    createChat(chat: { productId: 101 }) {
         id
     }
 }
