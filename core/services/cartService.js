@@ -26,3 +26,27 @@ export const addProductToCart = async (userId, productId) => {
 
     return cart;
 }
+
+export const removeProductFromCart = async (userId, productId) => {
+    // Verify the product exists and retrieve the cart in parallel
+    const [productExists, cart] = await Promise.all([
+        productRepository.getById(productId),
+        cartRepository.getCartByUserId(userId)
+    ]);
+
+    // Check if the product is in the cart
+    const cartProduct = await cartProductRepository.getCartProducts(cart.id, productId);
+    if (!cartProduct) {
+        throw handleError("This product is not in your cart", 'BAD_REQUEST');
+    }
+
+    // Remove the product from the cart
+    await cartProductRepository.removeProductFromCart(cart.id, productId);
+
+    return cart;
+}
+
+export const getUserCart = async (userId) => {
+    //return all product from current users cart
+    return await cartRepository.getCartByUserId(userId);
+}

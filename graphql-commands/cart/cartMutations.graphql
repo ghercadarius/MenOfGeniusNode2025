@@ -11,3 +11,18 @@ mutation AddProductToMyCart {
         }
     }
 }
+
+mutation RemoveProductFromMyCart {
+    removeProductFromCart(productId: 4) {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+            name
+        }
+    }
+}
+
