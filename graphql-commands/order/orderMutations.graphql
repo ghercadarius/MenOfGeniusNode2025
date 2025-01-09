@@ -11,3 +11,16 @@ mutation createOrder{
         status
     }
 }
+
+mutation respondToOffer{
+    respondToOffer(orderId: 1, response: true) {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}

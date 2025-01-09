@@ -44,16 +44,12 @@ class ProductRepository {
         return db.Product.create(product);
     }
 
-    // static async getByCategory(category){
-    //     return await db.Product.findAll({
-    //         where: {
-    //             category: {
-    //                 [db.Sequelize.Op.like]: `%${category}%`,
-    //
-    //             }
-    //         }
-    //     });
-    // }
+    static async destroyProduct(id) {
+        const product = await db.Product.findByPk(id);
+        if(!product)
+            handleError("Product not found", 'BAD_REQUEST');
+        return await product.destroy();
+    }
 }
 
 export default ProductRepository;
