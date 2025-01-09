@@ -1,6 +1,6 @@
 # Login as user
 mutation Login {
-    login(credentials: { username: "cart", password: "cart" }) {
+    login(credentials: { username: "user", password: "user" }) {
         token
     }
 }
@@ -8,6 +8,12 @@ mutation Login {
 # Login as admin
 mutation Login {
     login(credentials: { username: "admin", password: "admin" }) {
+        token
+    }
+}
+
+mutation QuickLogin {
+    login(credentials: { username: "cart", password: "cart" }) {
         token
     }
 }

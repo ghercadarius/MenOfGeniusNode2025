@@ -4,7 +4,7 @@ import chatInputType from "../../types/chat/chatInputType.js";
 import {securedResolver} from "../../../core/utils/securedResolver.js";
 
 const createChatMutationResolver = async (_, args, context) => {
-    return await createChat(args.chat, context.user_id);
+    return await createChat(args.chat, context.userId);
 }
 
 const createChatMutation = {

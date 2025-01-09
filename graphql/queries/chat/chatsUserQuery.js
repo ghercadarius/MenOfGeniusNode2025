@@ -4,7 +4,7 @@ import {GraphQLList} from "graphql";
 import chatType from "../../types/chat/chatType.js";
 
 const chatsUserResolver = async (_, args, context) => {
-    return await getAllUserChats(context.user_id);
+    return await getAllUserChats(context.userId);
 }
 const chatsUserQuery = {
     type: new GraphQLList(chatType),

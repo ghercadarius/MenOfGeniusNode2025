@@ -1,6 +1,7 @@
 import chatRepository from "../repositories/chatRepository.js";
 import {handleError} from "../utils/handleError.js";
 import chatType from "../../graphql/types/chat/chatType.js";
+import productRepository from "../repositories/productRepository.js";
 
 export const getChatById = async (id, user_id) => {
     const chat = await chatRepository.getById(id);
@@ -13,7 +14,13 @@ export const getChatById = async (id, user_id) => {
 
 export const getAllUserChats = async (user_id) => {
     const chats = await chatRepository.getAll();
-    return chats.filter(chat => chat.userId === user_id);
+    const result = [];
+    for (const chat of chats) {
+        const product = await productRepository.getById(chat.productId);
+        if (product.userId === user_id || chat.userId === user_id)
+            result.push(chat);
+    }
+    return result;
 }
 
 export const getAllChats = async ()=> {

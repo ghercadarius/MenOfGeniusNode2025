@@ -5,7 +5,7 @@ import {getAllByChatId} from "../../../core/services/messageService.js";
 import messageType from "../../types/message/messageType.js";
 
 const messageQueryResolver = async (_, args, context) => {
-    return await getAllByChatId(args.chatId, context.user_id);
+    return await getAllByChatId(args.chatId, context.userId);
 }
 
 const messagesChatQuery = {

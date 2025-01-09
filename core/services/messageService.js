@@ -18,7 +18,7 @@ export const getAllByChatId = async(chat_id, user_id) => {
 export const createMessage = async(message, user_id) => {
     const verifyUserChat = await chatRepository.getById(message.chatId);
     const productChat = await productRepository.getById(verifyUserChat.productId);
-    if (verifyUserChat.userId !== user_id || productChat.userId !== user_id) {
+    if (verifyUserChat.userId !== user_id && productChat.userId !== user_id) {
         throw new Error('User is not allowed to write in this chat');
     }
     message.userId = user_id;

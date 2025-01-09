@@ -4,7 +4,7 @@ import messageType from "../../types/message/messageType.js";
 import {createMessage} from "../../../core/services/messageService.js";
 
 const createMessageMutationResolver = async (_, args, context) => {
-    return await createMessage(args.message, context.user_id);
+    return await createMessage(args.message, context.userId);
 }
 
 const createMessageMutation = {

@@ -1,5 +1,5 @@
 mutation MessageMutation {
-    createMessage(message: { message: "Raspuns la hello", chatId: 6}) {
+    createMessage(message: { message: "Raspuns", chatId: 2}) {
         id
         message
     }
