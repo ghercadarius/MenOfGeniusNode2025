@@ -1,0 +1,17 @@
+query getUserCart {
+    cart {
+        id
+        user {
+            id
+            username
+            roles
+        }
+        products {
+            id
+            name
+            price
+            description
+            category
+        }
+    }
+}

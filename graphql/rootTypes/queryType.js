@@ -7,6 +7,7 @@ import userMeQuery from "../queries/user/userMeQuery.js";
 import chatQuery from "../queries/chat/chatQuery.js";
 import chatsUserQuery from "../queries/chat/chatsUserQuery.js";
 import chatsQuery from "../queries/chat/chatsQuery.js";
+import userCartQuery from "../queries/cart/userCartQuery.js";
 
 const queryType = new GraphQLObjectType({
     name: "Query",
@@ -20,8 +21,8 @@ const queryType = new GraphQLObjectType({
         product: productQuery,
         products: productsQuery,
 
-        //TODO - add cart queries getCartProducts
-
+        //cart Queries
+        cart: userCartQuery,
 
         chat: chatQuery,
         chats: chatsQuery,
