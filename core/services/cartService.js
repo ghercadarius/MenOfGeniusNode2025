@@ -50,3 +50,11 @@ export const getUserCart = async (userId) => {
     //return all product from current users cart
     return await cartRepository.getCartByUserId(userId);
 }
+
+export const removeAllProductsFromCart = async (userId) => {
+    //remove all products from current users cart
+    const cart = await cartRepository.getCartByUserId(userId);
+    await cartProductRepository.removeAllProductsFromCart(cart.id);
+
+    return cart;
+}

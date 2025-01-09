@@ -26,6 +26,14 @@ class CartProductRepository {
         });
     }
 
+    static async removeAllProductsFromCart(cartId) {
+        return await db.CartProducts.destroy({
+            where: {
+                cartId
+            }
+        });
+    }
+
 }
 
 export default CartProductRepository;
