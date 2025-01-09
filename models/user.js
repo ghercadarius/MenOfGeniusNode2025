@@ -6,6 +6,7 @@ export default (sequelize, DataTypes) => {
         static associate(models) {
             User.belongsToMany(models.Role, {through: 'UserRoles', foreignKey: 'userId'});
             User.hasMany(models.Product, {foreignKey: 'userId', as: 'products'});
+            User.hasOne(models.Cart, {foreignKey: 'userId', as: 'cart'});
         }
     }
 

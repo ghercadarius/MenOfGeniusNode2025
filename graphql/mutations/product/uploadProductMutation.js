@@ -4,7 +4,7 @@ import productInputType from "../../types/product/productInputType.js";
 import {uploadProduct} from "../../../core/services/productService.js";
 
 const uploadProductResolver = async (_, args, context) => {
-    return await uploadProduct(args.product, context.user_id);
+    return await uploadProduct(args.product, context.userId);
 }
 
 const uploadProductMutation = {

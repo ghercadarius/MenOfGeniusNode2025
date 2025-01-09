@@ -4,22 +4,30 @@ import updateUserMutation from '../mutations/user/updateUserMutation.js';
 import deleteUserMutation from '../mutations/user/deleteUserMutation.js';
 import loginMutation from '../mutations/login/loginMutation.js';
 import uploadProductMutation from '../mutations/product/uploadProductMutation.js';
+import addProductToCartMutation from "../mutations/cart/addProductToCartMutation.js";
 import createChatMutation from "../mutations/chat/createChatMutation.js";
 import createMessageMutation from "../mutations/message/messageMutation.js";
 
 // Define the Query type
-const queryType = new graphql.GraphQLObjectType({
+const mutationType = new graphql.GraphQLObjectType({
     name: "Mutation",
     fields: {
-        //TODO - implemmet UserRepository and UserService
+        //User Mutations
         createUser: createUserMutation,
         updateUser: updateUserMutation,
         deleteUser: deleteUserMutation,
 
+        //Auth Mutations
         login: loginMutation,
 
+        //Product Mutations
         uploadProduct: uploadProductMutation,
 
+        //Cart Mutations
+        addProductToCart: addProductToCartMutation,
+        //TODO - add deleteProductFromCart mutationd
+
+        //Chat Mutations
         createChat: createChatMutation,
 
         createMessage: createMessageMutation,
@@ -27,4 +35,4 @@ const queryType = new graphql.GraphQLObjectType({
 });
 
 
-export default queryType;
+export default mutationType;

@@ -1,6 +1,6 @@
 # Create a new user
 mutation CreateUser {
-    createUser(user: { username: "admin", password: "admin" }) {
+    createUser(user: { username: "cart", password: "cart" }) {
         id
         username
         roles
@@ -9,7 +9,7 @@ mutation CreateUser {
 
 # Update user - need to be authenticated as ADMIN
 mutation UpdateUser {
-    updateUser(id: 2, user: { username: "TestUserUpdated" }) {
+    updateUser(id: 2, user: { username: "cos", password: "cos" }) {
         id
         username
     }
@@ -17,5 +17,9 @@ mutation UpdateUser {
 
 # Delete user - need to be authenticated as ADMIN
 mutation DeleteUser {
-    deleteUser(id: 5)
+    deleteUser(id: 13){
+        id
+        username
+        roles
+    }
 }
