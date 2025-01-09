@@ -9,6 +9,7 @@ import createChatMutation from "../mutations/chat/createChatMutation.js";
 import removeProductFromCartMutation from "../mutations/cart/removeProductFromCartMutation.js";
 import removeAllProductsFromCartMutation from "../mutations/cart/removeAllProductsFromCartMutation.js";
 import createMessageMutation from "../mutations/message/messageMutation.js";
+import createOrderMutation from "../mutations/order/createOrderMutation.js";
 
 // Define the Query type
 const mutationType = new graphql.GraphQLObjectType({
@@ -32,8 +33,10 @@ const mutationType = new graphql.GraphQLObjectType({
 
         //Chat Mutations
         createChat: createChatMutation,
-
         createMessage: createMessageMutation,
+
+        //Order Mutations
+        createOrder: createOrderMutation,
     }
 });
 

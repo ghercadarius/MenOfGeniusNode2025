@@ -10,7 +10,7 @@ export const createCart = async (userId) => {
 
 export const addProductToCart = async (userId, productId) => {
     // Verify the product exists and retrieve the cart in parallel
-    const [productExists, cart] = await Promise.all([
+    const [, cart] = await Promise.all([
         productRepository.getById(productId),
         cartRepository.getCartByUserId(userId)
     ]);

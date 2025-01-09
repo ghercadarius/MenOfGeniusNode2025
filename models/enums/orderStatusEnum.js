@@ -1,0 +1,7 @@
+export const OrderStatusEnum = {
+    PENDING: 'PENDING',
+    CONFIRMED: 'CONFIRMED',
+    DELIVERING: 'DELIVERING',
+    CANCELLED: 'CANCELLED',
+    COMPLETED: 'COMPLETED'
+}

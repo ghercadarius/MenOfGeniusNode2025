@@ -1,0 +1,9 @@
+mutation CreateOrder{
+    createOrder {
+        order {
+            id
+            status
+            product
+        }
+    }
+}

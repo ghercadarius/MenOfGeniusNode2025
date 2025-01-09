@@ -1,7 +1,3 @@
-'use strict';
-const {faker} = require('@faker-js/faker');
-const {ProductCategoryEnum} = require("../models/enums/productCategoryEnum");
-const Product = require("../models/product");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
