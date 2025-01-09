@@ -1,6 +1,7 @@
 import db from "../../models/index.js";
 import {OrderStatusEnum} from "../../models/enums/orderStatusEnum.js";
 import cartOrderRepository from "../repositories/cartProductRepository.js";
+import {promise} from "bcrypt/promises.js";
 
 export const createOrder = async (userId) => {
     const cart = await db.Cart.findOne({
@@ -27,5 +28,18 @@ export const createOrder = async (userId) => {
     await cartOrderRepository.removeAllProductsFromCart(cart.id);
 
     return allCreatedOrders;
+
+}
+
+export const getAllOffersReceived = async (userId) => {
+    const myProducts = await db.Product.findAll({
+        where: {userId}
+    });
+
+    return await Promise.all(myProducts.map(async (product) => {
+        return await db.Order.findAll({
+            where: {productId: product.id}
+        });
+    }));
 
 }

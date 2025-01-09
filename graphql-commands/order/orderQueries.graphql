@@ -1,0 +1,16 @@
+query myOffers {
+    offersReceived {
+        id
+        user {
+            id
+            username
+            roles
+        }
+        product {
+            id
+            name
+            price
+            category
+        }
+    }
+}
