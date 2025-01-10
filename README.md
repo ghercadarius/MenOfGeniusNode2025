@@ -15,7 +15,6 @@ chats, and carts. The application provides the following functionalities through
 - [Database Management](#database-management)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
