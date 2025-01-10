@@ -10,15 +10,19 @@ export const createCart = async (userId) => {
 
 export const addProductToCart = async (userId, productId) => {
     // Verify the product exists and retrieve the cart in parallel
-    const [, cart] = await Promise.all([
+    const [product, cart] = await Promise.all([
         productRepository.getById(productId),
         cartRepository.getCartByUserId(userId)
     ]);
 
+    if (product.userId === userId) {
+        handleError("You can't add your own product to your cart", 'BAD_REQUEST');
+    }
+
     // Check if the product is already in the cart
     const cartProduct = await cartProductRepository.getCartProduct(cart.id, productId);
     if (cartProduct) {
-        throw handleError("You already have this product in your cart", 'BAD_REQUEST');
+        handleError("You already have this product in your cart", 'BAD_REQUEST');
     }
 
     // Add the product to the cart
