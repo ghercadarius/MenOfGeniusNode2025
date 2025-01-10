@@ -74,5 +74,16 @@ export const respondToOffer = async (userId, orderId, response) => {
 
     await order.save();
 
+    if (response) {
+        setTimeout(async () => {
+            const updatedOrder = await db.Order.findByPk(orderId);
+            if (updatedOrder && updatedOrder.status === OrderStatusEnum.CONFIRMED) {
+                updatedOrder.status = OrderStatusEnum.DELIVERING;
+                await updatedOrder.save();
+                console.log(`Order ${orderId} status updated to DELIVERING.`);
+            }
+        }, 60000); // 60000ms = 1 minut
+    }
+
     return order;
 }
