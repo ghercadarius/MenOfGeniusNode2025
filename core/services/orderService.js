@@ -13,7 +13,7 @@ export const createOrder = async (userId) => {
     });
 
     const products = await Promise.all(cartProducts.map(async (cartProduct) => {
-        return await db.Product.findByPk(cartProduct.productId);
+        return await productRepository.getByPk(cartProduct.productId);
     }));
 
     const allCreatedOrders = await Promise.all(products.map(async (product) => {
@@ -33,7 +33,7 @@ export const createOrder = async (userId) => {
 
 export const getAllOffersReceived = async (userId) => {
     const myProducts = await db.Product.findAll({
-        where: {userId},
+        where: {userId, availability: true},
         attributes: ['id'], // Fetch only the necessary fields
     });
 
@@ -56,7 +56,7 @@ export const respondToOffer = async (userId, orderId, response) => {
         throw new Error('Order not found');
     }
 
-    const product = await db.Product.findByPk(order.productId);
+    const product = await productRepository.getByPk(order.productId);
 
     if (product.userId !== userId) {
         throw new Error('You are not the owner of this product');
@@ -69,7 +69,7 @@ export const respondToOffer = async (userId, orderId, response) => {
     order.status = response ? OrderStatusEnum.CONFIRMED : OrderStatusEnum.CANCELLED;
 
     if(response) {
-        await productRepository.destroyProduct(product.id);
+        await productRepository.setInactiveStatus(product.id);
     }
 
     await order.save();

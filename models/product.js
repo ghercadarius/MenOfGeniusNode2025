@@ -17,6 +17,10 @@ export default (sequelize, DataTypes) => {
         description: DataTypes.STRING,
         price: DataTypes.FLOAT,
         urlPhoto: DataTypes.STRING,
+        availability: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
+        },
         category: {
             type: DataTypes.ENUM(...Object.values(ProductCategoryEnum)),
             allowNull: false,
