@@ -87,3 +87,13 @@ export const respondToOffer = async (userId, orderId, response) => {
 
     return order;
 }
+
+export const getMyOrders = async (userId) => {
+    return await db.Order.findAll({
+        where: {userId},
+        include: [
+            {model: db.User, as: 'user'},
+            {model: db.Product, as: 'product'}
+        ]
+    });
+}

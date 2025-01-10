@@ -10,3 +10,16 @@ query myOffers {
         status
     }
 }
+
+query myOrders{
+    myOrders{
+        id
+        user{
+            username
+        }
+        product{
+            name
+        }
+        status
+    }
+}

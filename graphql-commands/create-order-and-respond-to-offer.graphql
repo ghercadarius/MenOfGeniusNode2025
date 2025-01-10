@@ -152,3 +152,19 @@ mutation respondToOffer{
         status
     }
 }
+
+query getMyProducts {
+    myProducts {
+        id
+        name
+        price
+        category
+    }
+}
+
+mutation Login {
+    login(credentials: { username: "user", password: "user" }) {
+        token
+    }
+}
+
