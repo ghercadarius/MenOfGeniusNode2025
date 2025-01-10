@@ -4,7 +4,7 @@ import {Model} from 'sequelize';
 export default (sequelize, DataTypes) => {
     class Message extends Model {
         static associate(models) {
-            Message.belongsTo(models.Chat, {foreignKey: 'chatId', as: 'chat'});
+            Message.belongsTo(models.Chat, {foreignKey: 'chatId', as: 'chat', onDelete: 'CASCADE'});
             Message.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
         }
     }

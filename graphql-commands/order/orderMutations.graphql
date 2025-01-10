@@ -1,0 +1,39 @@
+mutation createOrder{
+    createOrder {
+        id
+        user {
+            id
+            username
+        }
+        product{
+            name
+        }
+        status
+    }
+}
+
+mutation respondToOffer{
+    respondToOffer(orderId: 1, response: true) {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}
+
+mutation confirmOrder{
+    confirmOrder(orderId: 1) {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}

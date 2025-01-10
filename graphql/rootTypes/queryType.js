@@ -9,6 +9,9 @@ import chatsUserQuery from "../queries/chat/chatsUserQuery.js";
 import chatsQuery from "../queries/chat/chatsQuery.js";
 import userCartQuery from "../queries/cart/userCartQuery.js";
 import messagesChatQuery from "../queries/message/messagesChatQuery.js";
+import offersReceivedQuery from "../queries/order/offersReceivedQuery.js";
+import myProductsQuery from "../queries/product/myProductsQuery.js";
+import myOrdersQuery from "../queries/order/myOrdersQuery.js";
 
 const queryType = new GraphQLObjectType({
     name: "Query",
@@ -21,15 +24,20 @@ const queryType = new GraphQLObjectType({
         //Product Queries
         product: productQuery,
         products: productsQuery,
+        myProducts: myProductsQuery,
 
-        //cart Queries
+        //Cart Queries
         cart: userCartQuery,
 
+        //Chat Queries
         chat: chatQuery,
         chats: chatsQuery,
         chatsUser: chatsUserQuery,
-
         messagesChat: messagesChatQuery,
+
+        //Order Queries
+        offersReceived: offersReceivedQuery,
+        myOrders: myOrdersQuery,
     },
 });
 

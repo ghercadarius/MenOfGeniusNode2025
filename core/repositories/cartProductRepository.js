@@ -8,11 +8,19 @@ class CartProductRepository {
         });
     }
 
-    static async getCartProducts(cartId, productId) {
+    static async getCartProduct(cartId, productId) {
         return await db.CartProducts.findOne({
             where: {
                 cartId,
                 productId
+            }
+        });
+    }
+
+    static async getCartProducts(cartId) {
+        return await db.CartProducts.findAll({
+            where: {
+                cartId
             }
         });
     }

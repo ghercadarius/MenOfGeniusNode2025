@@ -1,0 +1,209 @@
+mutation CreateUser {
+    createUser(user: { username: "cart", password: "cart" }) {
+        id
+        username
+        roles
+    }
+}
+
+mutation QuickLogin {
+    login(credentials: { username: "cart", password: "cart" }) {
+        token
+    }
+}
+
+mutation UploadProduct1 {
+    uploadProduct(product: { name: "Product 1", price: 99.99, description: "Product 1 description" ,urlPhoto: "https://www.google.com", category: T_SHIRTS}) {
+        id
+        category
+        name
+        price
+        description
+        urlPhoto
+    }
+}
+
+mutation UploadProduct2 {
+    uploadProduct(product: { name: "Product 2", price: 99.99, description: "Product 1 description" ,urlPhoto: "https://www.google.com", category: T_SHIRTS}) {
+        id
+        category
+        name
+        price
+        description
+        urlPhoto
+    }
+}
+
+mutation Login {
+    login(credentials: { username: "user", password: "user" }) {
+        token
+    }
+}
+
+mutation AddProductToMyCart1 {
+    addProductToCart(productId: 101) {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+            name
+        }
+    }
+}
+
+mutation AddProductToMyCart2 {
+    addProductToCart(productId: 102) {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+            name
+        }
+    }
+}
+
+query getMyCart {
+    cart {
+        id
+        user {
+            username
+        }
+        products {
+            id
+            name
+            price
+            category
+        }
+    }
+}
+
+mutation createOrder{
+    createOrder {
+        id
+        user {
+            id
+            username
+        }
+        product{
+            name
+        }
+        status
+    }
+}
+
+query getMyCart {
+    cart {
+        id
+        user {
+            username
+        }
+        products {
+            id
+            name
+            price
+            category
+        }
+    }
+}
+
+mutation QuickLogin2 {
+    login(credentials: { username: "cart", password: "cart" }) {
+        token
+    }
+}
+
+query getMyProducts {
+    myProducts {
+        id
+        name
+        price
+        category
+    }
+}
+
+query myOffers {
+    offersReceived {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}
+
+mutation respondToOffer{
+    respondToOffer(orderId: 1, response: true) {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}
+
+query getMyProducts {
+    myProducts {
+        id
+        name
+        price
+        category
+    }
+}
+
+mutation Login {
+    login(credentials: { username: "user", password: "user" }) {
+        token
+    }
+}
+
+query myOrders{
+    myOrders{
+        id
+        user{
+            username
+        }
+        product{
+            name
+        }
+        status
+    }
+}
+
+mutation confirmOrder{
+    confirmOrder(orderId: 2) {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}
+
+query myOrders{
+    myOrders{
+        id
+        user{
+            username
+        }
+        product{
+            name
+        }
+        status
+    }
+}
+

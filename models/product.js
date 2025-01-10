@@ -6,8 +6,10 @@ export default (sequelize, DataTypes) => {
     class Product extends Model {
         static associate(models) {
             Product.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
-            Product.belongsToMany(models.Cart, {through: 'CartProducts', foreignKey: 'productId'});
-            }
+            Product.belongsToMany(models.Cart, {through: 'CartProducts', foreignKey: 'productId', onDelete: 'CASCADE'});
+            Product.belongsToMany(models.Chat, {through: 'Chats', foreignKey: 'productId', as: 'productChat', onDelete: 'CASCADE'});
+            Product.belongsToMany(models.Order, {through: 'Orders', foreignKey: 'productId', as: 'productOrder', onDelete: 'CASCADE'});
+        }
     }
 
     Product.init({
@@ -15,6 +17,10 @@ export default (sequelize, DataTypes) => {
         description: DataTypes.STRING,
         price: DataTypes.FLOAT,
         urlPhoto: DataTypes.STRING,
+        availability: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
+        },
         category: {
             type: DataTypes.ENUM(...Object.values(ProductCategoryEnum)),
             allowNull: false,
