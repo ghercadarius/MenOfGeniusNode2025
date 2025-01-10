@@ -168,3 +168,42 @@ mutation Login {
     }
 }
 
+query myOrders{
+    myOrders{
+        id
+        user{
+            username
+        }
+        product{
+            name
+        }
+        status
+    }
+}
+
+mutation confirmOrder{
+    confirmOrder(orderId: 2) {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}
+
+query myOrders{
+    myOrders{
+        id
+        user{
+            username
+        }
+        product{
+            name
+        }
+        status
+    }
+}
+

@@ -24,3 +24,16 @@ mutation respondToOffer{
         status
     }
 }
+
+mutation confirmOrder{
+    confirmOrder(orderId: 1) {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}

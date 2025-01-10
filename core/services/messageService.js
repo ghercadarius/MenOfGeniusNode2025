@@ -9,7 +9,7 @@ export const getAllByChatId = async(chat_id, user_id) => {
     const verifyUserChat = await chatRepository.getById(chat_id);
     const productChat = await productRepository.getById(verifyUserChat.productId);
     if (verifyUserChat.userId !== user_id && productChat.userId !== user_id && !hasRoles(user_id, ['ADMIN'])) {
-        throw new Error('User is not allowed to see this chat');
+        handleError('User is not allowed to see this chat');
     }
     const messages = await messageRepository.getAll();
     return messages.filter(message => message.chatId === chat_id);
@@ -19,7 +19,7 @@ export const createMessage = async(message, user_id) => {
     const verifyUserChat = await chatRepository.getById(message.chatId);
     const productChat = await productRepository.getById(verifyUserChat.productId);
     if (verifyUserChat.userId !== user_id && productChat.userId !== user_id) {
-        throw new Error('User is not allowed to write in this chat');
+        handleError('User is not allowed to write in this chat');
     }
     message.userId = user_id;
     return await messageRepository.save(message);
