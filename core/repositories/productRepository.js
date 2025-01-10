@@ -85,6 +85,12 @@ class ProductRepository {
         product.availability = false;
         return await product.save();
     }
+
+    static async getMyProducts(userId) {
+        return await db.Product.findAll({
+            where: {userId, availability: true}
+        });
+    }
 }
 
 export default ProductRepository;

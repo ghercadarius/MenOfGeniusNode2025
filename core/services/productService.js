@@ -9,6 +9,11 @@ export const uploadProduct = async (product, userId) => {
     return await productRepository.save(product);
 }
 
+export const getMyProducts = async (userId) => {
+    return await productRepository.getMyProducts(userId);
+}
+
+
 export const getProductById = async (id) => {
     const product = await productRepository.getById(id);
     if (!product)

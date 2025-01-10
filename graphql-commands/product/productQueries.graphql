@@ -1,3 +1,13 @@
+# Fetch all my products
+query getMyProducts {
+    myProducts {
+        id
+        name
+        price
+        category
+    }
+}
+
 # Fetch all products
 query GetAllProducts {
     products {

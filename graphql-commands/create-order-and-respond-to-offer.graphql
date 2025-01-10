@@ -68,6 +68,21 @@ mutation AddProductToMyCart2 {
     }
 }
 
+query getMyCart {
+    cart {
+        id
+        user {
+            username
+        }
+        products {
+            id
+            name
+            price
+            category
+        }
+    }
+}
+
 mutation createOrder{
     createOrder {
         id
@@ -82,19 +97,16 @@ mutation createOrder{
     }
 }
 
-query getUserCart {
+query getMyCart {
     cart {
         id
         user {
-            id
             username
-            roles
         }
         products {
             id
             name
             price
-            description
             category
         }
     }
@@ -103,6 +115,15 @@ query getUserCart {
 mutation QuickLogin2 {
     login(credentials: { username: "cart", password: "cart" }) {
         token
+    }
+}
+
+query getMyProducts {
+    myProducts {
+        id
+        name
+        price
+        category
     }
 }
 
@@ -120,7 +141,7 @@ query myOffers {
 }
 
 mutation respondToOffer{
-    respondToOffer(orderId: 2, response: true) {
+    respondToOffer(orderId: 1, response: true) {
         id
         user {
             username
