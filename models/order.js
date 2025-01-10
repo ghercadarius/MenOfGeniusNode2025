@@ -6,7 +6,7 @@ export default (sequelize, DataTypes) => {
     class Order extends Model {
         static associate(models) {
             Order.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
-            Order.belongsTo(models.Product, {foreignKey: 'productId', as: 'product'});
+            Order.belongsTo(models.Product, {foreignKey: 'productId', as: 'product', onDelete: 'CASCADE'});
         }
     }
 

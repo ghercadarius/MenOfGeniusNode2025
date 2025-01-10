@@ -1,5 +1,5 @@
 mutation AddProductToMyCart {
-    addProductToCart(productId: 36) {
+    addProductToCart(productId: 102) {
         id
         user {
             id

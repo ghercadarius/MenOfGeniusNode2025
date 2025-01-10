@@ -6,6 +6,7 @@ export default (sequelize, DataTypes) => {
         static associate(models) {
             Chat.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
             Chat.belongsTo(models.Product, {foreignKey: 'productId', as: 'product'});
+            Chat.belongsToMany(models.Message, {through: 'ChatMessages', foreignKey: 'chatId'});
         }
     }
 
