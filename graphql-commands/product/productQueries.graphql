@@ -1,0 +1,61 @@
+# Fetch all my products
+query getMyProducts {
+    myProducts {
+        id
+        name
+        price
+        category
+    }
+}
+
+# Fetch all products
+query GetAllProducts {
+    products {
+        id
+        name
+        price
+        description
+        category
+    }
+}
+
+# Fetch product by ID
+query GetProductById {
+    product(id: 1) {
+        id
+        name
+        price
+        description
+        category
+    }
+}
+
+query GetAllProducts{
+    products(category: "T_SHIRTS"){
+        id
+        name
+        price
+        description
+        category
+    }
+}
+
+query GetAllProducts{
+    products(category: "T_SHIRTS", minPrice: 100, maxPrice: 1000){
+        id
+        name
+        price
+        description
+        category
+    }
+}
+
+query GetAllProducts{
+    products(minPrice: 100, maxPrice: 150){
+        id
+        name
+        price
+        description
+        category
+    }
+}

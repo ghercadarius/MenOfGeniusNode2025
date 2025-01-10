@@ -1,0 +1,166 @@
+mutation CreateUser {
+    createUser(user: { username: "userToSell", password: "user" }) {
+        id
+        username
+        roles
+    }
+}
+
+mutation QuickLogin {
+    login(credentials: { username: "userToSell", password: "user" }) {
+        token
+    }
+}
+
+mutation UploadProduct1 {
+    uploadProduct(product: { name: "Product 1", price: 99.99, description: "Product 1 description" ,urlPhoto: "https://www.google.com", category: T_SHIRTS}) {
+        id
+        category
+        name
+        price
+        description
+        urlPhoto
+    }
+}
+
+mutation UploadProduct2 {
+    uploadProduct(product: { name: "Product 2", price: 99.99, description: "Product 2 description" ,urlPhoto: "https://www.google.com", category: T_SHIRTS}) {
+        id
+        category
+        name
+        price
+        description
+        urlPhoto
+    }
+}
+
+mutation CreateUser1 {
+    createUser(user: { username: "userToBuy1", password: "user" }) {
+        id
+        username
+        roles
+    }
+}
+
+mutation QuickLogin1 {
+    login(credentials: { username: "userToBuy1", password: "user" }) {
+        token
+    }
+}
+
+mutation CreateChat1 {
+    createChat(chat: { productId: 101 }) {
+        id
+        user {
+            id
+            username
+        }
+    }
+}
+
+mutation SendMessage1 {
+    createMessage(message: { message: "Raspuns la produs1", chatId: 1}) {
+        id
+        message
+    }
+}
+
+mutation CreateUser2 {
+    createUser(user: { username: "userToBuy2", password: "user" }) {
+        id
+        username
+        roles
+    }
+}
+
+mutation QuickLogin2 {
+    login(credentials: { username: "userToBuy2", password: "user" }) {
+        token
+    }
+}
+
+mutation CreateChat2 {
+    createChat(chat: { productId: 102 }) {
+        id
+        user {
+            id
+            username
+        }
+    }
+}
+
+mutation SendMessage2 {
+    createMessage(message: { message: "Raspuns la produs1", chatId: 2}) {
+        id
+        message
+    }
+}
+
+mutation QuickLogin3 {
+    login(credentials: { username: "userToSell", password: "user" }) {
+        token
+    }
+}
+
+query GetChatsofSeller{
+        chatsUser {
+            id
+            user {
+                id
+                username
+            }
+            product {
+                id
+                name
+            }
+        }
+}
+
+query GetMessagesOfChat1 {
+    messagesChat(chatId: 1) {
+        id
+        user{
+            username
+        }
+        message
+    }
+}
+
+query GetMessagesOfChat2 {
+    messagesChat(chatId: 2) {
+        id
+        user{
+            username
+        }
+        message
+    }
+}
+
+mutation SendMessageToUser {
+    createMessage(message: { message: "Raspuns pt cumparator", chatId: 1}) {
+        id
+        message
+    }
+}
+
+mutation QuickLogin4 {
+    login(credentials: { username: "userToBuy1", password: "user" }) {
+        token
+    }
+}
+
+query GetMessagesOfChat4 {
+    messagesChat(chatId: 1) {
+        id
+        user{
+            username
+        }
+        message
+    }
+}
+
+
+
+
+
+

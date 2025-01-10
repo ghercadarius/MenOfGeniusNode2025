@@ -1,0 +1,42 @@
+mutation AddProductToMyCart {
+    addProductToCart(productId: 102) {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+            name
+        }
+    }
+}
+
+mutation RemoveProductFromMyCart {
+    removeProductFromCart(productId: 4) {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+            name
+        }
+    }
+}
+
+mutation RemoveAllProductsFromMyCart {
+    removeAllProductsFromCart {
+        id
+        user {
+            id
+            username
+        }
+        products {
+            id
+            name
+        }
+    }
+}
+

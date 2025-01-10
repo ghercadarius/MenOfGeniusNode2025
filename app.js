@@ -1,14 +1,14 @@
 import express from 'express';
-import { createHandler } from 'graphql-http/lib/use/express';
-import { GraphQLSchema } from 'graphql'
+import {createHandler} from 'graphql-http/lib/use/express';
+import {GraphQLSchema} from 'graphql'
 import queryType from './graphql/rootTypes/queryType.js'
 import mutationType from './graphql/rootTypes/mutationType.js'
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from './constants.js';
+import {JWT_SECRET} from './constants.js';
 
-const schema = new GraphQLSchema({ 
+const schema = new GraphQLSchema({
     query: queryType,
-    mutation: mutationType 
+    mutation: mutationType
 })
 
 const app = express()
@@ -16,7 +16,7 @@ const app = express()
 const jwtMiddleware = (req, res, next) => {
     const token = req.headers.authorization?.replace("Bearer ", "");
 
-    if(!token) {
+    if (!token) {
         next();
         return;
     }
@@ -24,11 +24,12 @@ const jwtMiddleware = (req, res, next) => {
     try {
         const decodedPayload = jwt.verify(token, JWT_SECRET);
         console.log('decodedPayload', decodedPayload);
-        req.user_id = decodedPayload.user_id;
+        req.userId = decodedPayload.userId;
         next();
-    } catch(e) {
+    } catch (e) {
         console.log("Invalid Token", e);
-        next();
+        //TODO - Implement a error handling middleware
+        return res.status(401).json({error: 'Invalid or expired token'});
     }
 }
 
@@ -43,7 +44,7 @@ app.all(
         schema: schema,
         context: (req) => {
             return {
-                user_id: req.raw.user_id,
+                userId: req.raw.userId,
             }
         }
     })

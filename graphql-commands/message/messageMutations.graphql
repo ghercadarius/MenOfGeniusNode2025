@@ -1,0 +1,6 @@
+mutation MessageMutation {
+    createMessage(message: { message: "Raspuns", chatId: 2}) {
+        id
+        message
+    }
+}

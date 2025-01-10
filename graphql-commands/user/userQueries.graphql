@@ -1,0 +1,26 @@
+# Fetch all users
+query GetAllUsers {
+    users {
+        id
+        username
+        roles
+    }
+}
+
+# Fetch user by ID
+query GetUserById {
+    user(id: 1) {
+        id
+        username
+        roles
+    }
+}
+
+# Get user authenticated
+query GetMe {
+    me{
+        id
+        username
+        roles
+    }
+}

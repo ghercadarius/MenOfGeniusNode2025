@@ -1,19 +1,32 @@
 'use strict';
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('Users', {
+        await queryInterface.createTable('Messages', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            username: {
-                type: Sequelize.STRING,
+            chatId: {
+                type: Sequelize.INTEGER,
                 allowNull: false,
+                references: {
+                    model: 'Chats',
+                    key: 'id'
+                }
             },
-            password: {
+            userId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'Users',
+                    key: 'id'
+                }
+            },
+            message: {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
@@ -25,9 +38,10 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.DATE
             }
-        });
+        })
     },
+
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('Users');
+        await queryInterface.dropTable('Messages')
     }
 };

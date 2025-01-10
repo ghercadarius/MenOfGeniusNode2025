@@ -57,13 +57,13 @@ after(() => {
 
 describe('E1 - Find user', () => {
   test('should find one user', async () => {
-      const res = await queryGraphql({ query: '{ user(id: 1) { id, name } }' });
+      const res = await queryGraphql({ query: '{ username(id: 1) { id, name } }' });
 
       assert.strictEqual(res.statusCode, 200);
       assert.strictEqual(res.body.data.user.name, 'John');
   });
   test('should return null for user not found', async () => {
-    const res = await queryGraphql({ query: '{ user(id: 999999) { id, name } }' });
+    const res = await queryGraphql({ query: '{ username(id: 999999) { id, name } }' });
   
     assert.strictEqual(res.statusCode, 200);
     assert.strictEqual(res.body.data.user, null);
@@ -88,7 +88,7 @@ describe('E3 - create user', () => {
       assert.strictEqual(res.statusCode, 200);
       console.log('test:body', res.body);
 
-      const resList = await queryGraphql({ query: '{ users {id, name} }' });
+      const resList = await queryGraphql({ query: '{ username {id, name} }' });
       assert.strictEqual(resList.body.data.users.length, 3);
       assert.strictEqual(resList.body.data.users[2].name, 'Example');
   });
