@@ -34,7 +34,7 @@ export const createOrder = async (userId) => {
 
 export const getAllOffersReceived = async (userId) => {
     const myProducts = await db.Product.findAll({
-        where: {userId, availability: true},
+        where: {userId},
         attributes: ['id'], // Fetch only the necessary fields
     });
 
