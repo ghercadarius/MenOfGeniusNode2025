@@ -49,7 +49,7 @@ mutation QuickLogin1 {
 }
 
 mutation CreateChat1 {
-    createChat(chat: { productId: 101 }) {
+    createChat(chat: { productId: 103 }) {
         id
         user {
             id
@@ -80,7 +80,7 @@ mutation QuickLogin2 {
 }
 
 mutation CreateChat2 {
-    createChat(chat: { productId: 102 }) {
+    createChat(chat: { productId: 104 }) {
         id
         user {
             id
@@ -90,7 +90,7 @@ mutation CreateChat2 {
 }
 
 mutation SendMessage2 {
-    createMessage(message: { message: "Raspuns la produs1", chatId: 2}) {
+    createMessage(message: { message: "Raspuns la produs 2", chatId: 2}) {
         id
         message
     }
