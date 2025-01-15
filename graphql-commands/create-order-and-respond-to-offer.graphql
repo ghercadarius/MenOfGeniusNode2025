@@ -1,5 +1,5 @@
 mutation CreateUser {
-    createUser(user: { username: "cart", password: "cart" }) {
+    createUser(user: { username: "userToSell", password: "userToSell" }) {
         id
         username
         roles
@@ -7,7 +7,7 @@ mutation CreateUser {
 }
 
 mutation QuickLogin {
-    login(credentials: { username: "cart", password: "cart" }) {
+    login(credentials: { username: "userToSell", password: "userToSell" }) {
         token
     }
 }
@@ -35,7 +35,7 @@ mutation UploadProduct2 {
 }
 
 mutation Login {
-    login(credentials: { username: "user", password: "user" }) {
+    login(credentials: { username: "userToBuy1", password: "userToBuy1" }) {
         token
     }
 }
@@ -113,7 +113,7 @@ query getMyCart {
 }
 
 mutation QuickLogin2 {
-    login(credentials: { username: "cart", password: "cart" }) {
+    login(credentials: { username: "userToSell", password: "userToSell" }) {
         token
     }
 }
@@ -163,7 +163,7 @@ query getMyProducts {
 }
 
 mutation Login {
-    login(credentials: { username: "user", password: "user" }) {
+    login(credentials: { username: "userToBuy1", password: "userToBuy1" }) {
         token
     }
 }
@@ -182,7 +182,7 @@ query myOrders{
 }
 
 mutation confirmOrder{
-    confirmOrder(orderId: 2) {
+    confirmOrder(orderId: 1) {
         id
         user {
             username
