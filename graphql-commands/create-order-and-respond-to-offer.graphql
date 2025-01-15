@@ -6,6 +6,14 @@ mutation CreateUser {
     }
 }
 
+mutation CreateUserToBuy {
+    createUser(user: { username: "userToBuy1", password: "userToBuy1"}) {
+        id
+        username
+        roles
+    }
+}
+
 mutation QuickLogin {
     login(credentials: { username: "userToSell", password: "userToSell" }) {
         token
@@ -142,6 +150,19 @@ query myOffers {
 
 mutation respondToOffer{
     respondToOffer(orderId: 1, response: true) {
+        id
+        user {
+            username
+        }
+        product {
+            id
+        }
+        status
+    }
+}
+
+mutation respondToOffer{
+    respondToOffer(orderId: 2, response: false) {
         id
         user {
             username

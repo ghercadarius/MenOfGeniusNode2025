@@ -1,5 +1,5 @@
 mutation CreateUser {
-    createUser(user: { username: "userToSell", password: "user" }) {
+    createUser(user: { username: "userToSell", password: "userToSell" }) {
         id
         username
         roles
@@ -7,7 +7,7 @@ mutation CreateUser {
 }
 
 mutation QuickLogin {
-    login(credentials: { username: "userToSell", password: "user" }) {
+    login(credentials: { username: "userToSell", password: "userToSell" }) {
         token
     }
 }
@@ -35,7 +35,7 @@ mutation UploadProduct2 {
 }
 
 mutation CreateUser1 {
-    createUser(user: { username: "userToBuy1", password: "user" }) {
+    createUser(user: { username: "userToBuy1", password: "userToBuy1" }) {
         id
         username
         roles
@@ -43,7 +43,7 @@ mutation CreateUser1 {
 }
 
 mutation QuickLogin1 {
-    login(credentials: { username: "userToBuy1", password: "user" }) {
+    login(credentials: { username: "userToBuy1", password: "userToBuy1" }) {
         token
     }
 }
@@ -66,7 +66,7 @@ mutation SendMessage1 {
 }
 
 mutation CreateUser2 {
-    createUser(user: { username: "userToBuy2", password: "user" }) {
+    createUser(user: { username: "userToBuy2", password: "userToBuy2" }) {
         id
         username
         roles
@@ -74,7 +74,7 @@ mutation CreateUser2 {
 }
 
 mutation QuickLogin2 {
-    login(credentials: { username: "userToBuy2", password: "user" }) {
+    login(credentials: { username: "userToBuy2", password: "userToBuy2" }) {
         token
     }
 }
@@ -97,7 +97,7 @@ mutation SendMessage2 {
 }
 
 mutation QuickLogin3 {
-    login(credentials: { username: "userToSell", password: "user" }) {
+    login(credentials: { username: "userToSell", password: "userToSell" }) {
         token
     }
 }
@@ -144,7 +144,7 @@ mutation SendMessageToUser {
 }
 
 mutation QuickLogin4 {
-    login(credentials: { username: "userToBuy1", password: "user" }) {
+    login(credentials: { username: "userToBuy1", password: "userToBuy1" }) {
         token
     }
 }
